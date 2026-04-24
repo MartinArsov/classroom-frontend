@@ -15,18 +15,18 @@ const options: CreateDataProviderOptions = {
         const field = 'field' in filter ? filter.field : '';
         const value = String(filter.value);
         if (resource === 'subjects') {
-          if (field === 'deparment') params.department = value;
+          if (field === 'department') params.department = value;
           if (field === 'name' || field === 'code') params.search = value;
         }
       });
       return params;
     },
     mapResponse: async (response) => {
-      const payload: ListResponse = await response.json();
+      const payload: ListResponse = await response.clone().json();
       return payload.data ?? [];
     },
     getTotalCount: async (response) => {
-      const payload: ListResponse = await response.json();
+      const payload: ListResponse = await response.clone().json();
       return payload.pagination?.total ?? payload.data?.length ?? 0;
     },
   },
