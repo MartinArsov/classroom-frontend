@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from '@/components/ui/card.tsx';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { useForm } from '@refinedev/react-hook-form';
 import { classSchema } from '@/lib/schema.ts';
 import * as z from 'zod';
 
@@ -145,9 +145,7 @@ const Create = () => {
                                 }
                               : null
                           }
-                          onChange={(file: any, field: any) =>
-                            setBannerImage(file, field)
-                          }
+                          onChange={(file) => setBannerImage(file, field)}
                         />
                       </FormControl>
                       <FormMessage />
