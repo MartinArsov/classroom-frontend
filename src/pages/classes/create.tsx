@@ -48,6 +48,7 @@ const Create = () => {
   });
 
   const {
+    refineCore: { onFinish },
     handleSubmit,
     formState: { isSubmitting, errors },
     control,
@@ -55,7 +56,7 @@ const Create = () => {
 
   const onSubmit = async (values: z.infer<typeof classSchema>) => {
     try {
-      console.log(values);
+      await onFinish(values);
     } catch (error) {
       console.error('Error creating class:', error);
     }
